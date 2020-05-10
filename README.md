@@ -20,7 +20,7 @@ The system utilizes Bluetooth Mesh network as the primary communication protocol
 
 ![](https://github.com/ANRGUSC/ble_sensor_mesh/blob/master/pics/System%20overview.png)
 
-Figure 1: System overview
+<center> Figure 1: System overview</center>
 
 #### The Bluetooth mesh network:
 
@@ -46,7 +46,7 @@ The server nodes are the device nodes that are physically connected with the sen
 The client node is the one to send commands to and receive data from the server nodes. The client node implements a sensor client model. In the primary design of the network, there is only one client node that exists in the network. Currently, the client node is designed to have an external button to send the commands to the server nodes. Every time the button has been pressed, the corresponding types of messages will be sent to the server node and receive the immediate replies. 
 ![](https://github.com/ANRGUSC/ble_sensor_mesh/blob/master/pics/Illustration%20of%20sensor%20server%20model.png)
 
-Figure 2: Illustration of Sensor server model and sensor client model
+<center>Figure 2: Illustration of Sensor server model and sensor client model</center>
 
 _(reference: model specification 4.5 )_
 ### the Provisioner node:
@@ -76,7 +76,7 @@ The sensor uses IIC bus to communicate with the server board via GPIO 18 and GPI
 
 ![](https://github.com/ANRGUSC/ble_sensor_mesh/blob/master/pics/temperature%20reading%20process.png)
 
-Figure 3: Temperature reading process
+<center>Figure 3: Temperature reading process</center>
 
 ![](https://github.com/ANRGUSC/ble_sensor_mesh/blob/master/pics/ambient%20eq.png)
 
@@ -84,13 +84,13 @@ Equation1: Ambient temperature formula
 
 ![](https://github.com/ANRGUSC/ble_sensor_mesh/blob/master/pics/target%20tem%20eq.png)
 
-Equation 2: Object temperature reading process
+<center>Equation 2: Object temperature reading process</center>
 
 And the schematic with ESP32
 
 ![](https://github.com/ANRGUSC/ble_sensor_mesh/blob/master/pics/devkitC%20to%20oti301.png)
 
-Figure 4: ESP 32 DevKit C to OTI-301
+<center>Figure 4: ESP 32 DevKit C to OTI-301</center>
 
 Alternatively, a contact temperature could also be used. The sensor DS18B20 is a one-wire waterproof temperature sensor. Here is the [library](https://github.com/nimaltd/ds18b20) of this sensor. The sensor DS18B20 has high resolution and accuracy, however, it also has the deflect for most contact temperature, a slow responding time. It usually takes 40 to 60 seconds to reach a stable readings since the temperature data is acquired by its steel probe, and the heat conduction takes time to complete.
 
@@ -139,23 +139,23 @@ After flash the project to the boards, the monitor program will be activated. Th
 
 ![](https://github.com/ANRGUSC/ble_sensor_mesh/blob/master/pics/fig5.png)
 
-Figure 5: Client provision successfully
+<center>Figure 5: Client provision successfully</center>
 
 ![](https://github.com/ANRGUSC/ble_sensor_mesh/blob/master/pics/fig6.png)
 
-Figure 6: Server side provision success log information
+<center>Figure 6: Server side provision success log information</center>
 
 Then you can try to get the temperature sensor information and readings by pressing the left button on the client board. The information of the sensor will show up like below:
 
 ![](https://github.com/ANRGUSC/ble_sensor_mesh/blob/master/pics/fig7.png)
 
-Figure 7: Server side temperature readings
+<center>Figure 7: Server side temperature readings</center>
 
 (The data is sent by multiple hexadecimal numbers as a row)
 
 ![](https://github.com/ANRGUSC/ble_sensor_mesh/blob/master/pics/fig8.png)
 
-Figure 8: Client side received temperature data
+<center>Figure 8: Client side received temperature data</center>
 
 #### Future development:
 
