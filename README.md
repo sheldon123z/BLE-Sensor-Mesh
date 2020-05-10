@@ -18,7 +18,7 @@ The skin temperature, heartbeat rate, and galvanic skin response sensor are conn
 
 The system utilizes Bluetooth Mesh network as the primary communication protocol. The network consists of 50 server nodes, one client node, and one Linux operating system based computer as the computational node to output the analysis of the data.
 
-![](pic/System overview.png)
+![](https://github.com/ANRGUSC/ble_sensor_mesh/blob/master/pics/System%20overview.png)
 
 Figure 1: System overview
 
@@ -43,7 +43,8 @@ Here are some brief explanations:
 ### the Server nodes:
 The server nodes are the device nodes that are physically connected with the sensors, and the provisioner will provision it after the network has been established. The server nodes implement two models, a sensor setup model, and a sensor server model. The two models work together to send different types of messages to the client node.
 ### the Client node:
-The client node is the one to send commands to and receive data from the server nodes. The client node implements a sensor client model. In the primary design of the network, there is only one client node that exists in the network. Currently, the client node is designed to have an external button to send the commands to the server nodes. Every time the button has been pressed, the corresponding types of messages will be sent to the server node and receive the immediate replies. ![](RackMultipart20200510-4-7r7bm3_html_37798fa37fb27e79.png)
+The client node is the one to send commands to and receive data from the server nodes. The client node implements a sensor client model. In the primary design of the network, there is only one client node that exists in the network. Currently, the client node is designed to have an external button to send the commands to the server nodes. Every time the button has been pressed, the corresponding types of messages will be sent to the server node and receive the immediate replies. 
+![](https://github.com/ANRGUSC/ble_sensor_mesh/blob/master/pics/Illustration%20of%20sensor%20server%20model.png)
 
 Figure 2: Illustration of Sensor server model and sensor client model
 
@@ -73,21 +74,21 @@ Temperature sensor: OTI-301, this temperature sensor is an infrared sensor, the 
 
 The sensor uses IIC bus to communicate with the server board via GPIO 18 and GPIO 19, and it has a high accuracy of ± 0.3C. When the sensor server node sends a get command, it replies with 6 bytes data, the first three bytes are ambient temperature data, and the rest are object temperature data. Here is the signal sequence diagram and formula to get the temperature data:
 
-![](RackMultipart20200510-4-7r7bm3_html_114370544451abb4.png)
+![](https://github.com/ANRGUSC/ble_sensor_mesh/blob/master/pics/temperature%20reading%20process.png)
 
 Figure 3: Temperature reading process
 
-![](RackMultipart20200510-4-7r7bm3_html_9414f803f2c0d555.png)
+![](https://github.com/ANRGUSC/ble_sensor_mesh/blob/master/pics/ambient%20eq.png)
 
 Equation1: Ambient temperature formula
 
-![](RackMultipart20200510-4-7r7bm3_html_288b1d2838f90a78.png)
+![](https://github.com/ANRGUSC/ble_sensor_mesh/blob/master/pics/target%20tem%20eq.png)
 
 Equation 2: Object temperature reading process
 
 And the schematic with ESP32
 
-![](RackMultipart20200510-4-7r7bm3_html_594d0359a1254e70.png)
+![](https://github.com/ANRGUSC/ble_sensor_mesh/blob/master/pics/devkitC%20to%20oti301.png)
 
 Figure 4: ESP 32 DevKit C to OTI-301
 
@@ -139,29 +140,25 @@ cd ~/esp/esp-idf
 
 After flash the project to the boards, the monitor program will be activated. The log information will be printed in the terminal. The sensor server will be automatically provisioned by the client once it has been detected, and the log information on the client side will show like below
 
-![](RackMultipart20200510-4-7r7bm3_html_9d168a62838029f3.png)
+![](https://github.com/ANRGUSC/ble_sensor_mesh/blob/master/pics/fig5.png)
 
 Figure 5: Client provision successfully
 
-![](RackMultipart20200510-4-7r7bm3_html_7c1f82161b8c07de.png)
+![](https://github.com/ANRGUSC/ble_sensor_mesh/blob/master/pics/fig6.png)
 
 Figure 6: Server side provision success log information
 
 Then you can try to get the temperature sensor information and readings by pressing the left button on the client board. The information of the sensor will show up like below:
 
-![](RackMultipart20200510-4-7r7bm3_html_3b6fee101d00c2ac.png)
+![](https://github.com/ANRGUSC/ble_sensor_mesh/blob/master/pics/fig7.png)
 
 Figure 7: Server side temperature readings
 
 (The data is sent by multiple hexadecimal numbers as a row)
 
-![](RackMultipart20200510-4-7r7bm3_html_9a95f99bbb4996e7.png)
+![](https://github.com/ANRGUSC/ble_sensor_mesh/blob/master/pics/fig8.png)
 
 Figure 8: Client side received temperature data
-
-**Discussion** :
-
-The project is not a mature project yet, it still needs a lot of work to development. Currently, only the temperature sensor and button functionalities are finished, the heartbeat sensor and the GSR sensor are still in development. However, the framework is almost done. The BLE mesh is capable to contain 32768 nodes, and every node can relay the messages to each other. That makes it a very efficient and highly extendable network, and hence very suitable for developing a sensor network.
 
 #### Future development:
 
