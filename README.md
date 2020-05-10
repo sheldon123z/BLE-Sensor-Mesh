@@ -2,21 +2,21 @@
 
 ## Introduction:
 
-        The main purpose of this project is to investigate the feasibility of implementing a sensor network to measure and monitor a group of student&#39;s real-time status while they are listening to the class. The project contains two parts. The first part is the single node device that is capable of measuring the student&#39;s temperature, heartbeat rate, and skin resistance value. The second part is to create a system that collects every student&#39;s real-time data through this network, and then analyze the data in the Linux operating system. Our internship mainly focuses on the first part of the project.
+The main purpose of this project is to investigate the feasibility of implementing a sensor network to measure and monitor a group of student&#39;s real-time status while they are listening to the class. The project contains two parts. The first part is the single node device that is capable of measuring the student&#39;s temperature, heartbeat rate, and skin resistance value. The second part is to create a system that collects every student&#39;s real-time data through this network, and then analyze the data in the Linux operating system. Our internship mainly focuses on the first part of the project.
 
 ## Project Goal:
 
 ### Purpose of the work:
 
-          The main task of this project is to create a sensor network that consists of 50 nodes. Each node can measure temperature, heartbeat rate, and galvanic skin response. The system can provide fast and real-time feedback to the lecturer, and also can provide scientific data to education area researchers.
+The main task of this project is to create a sensor network that consists of 50 nodes. Each node can measure temperature, heartbeat rate, and galvanic skin response. The system can provide fast and real-time feedback to the lecturer, and also can provide scientific data to education area researchers.
 
 ### Medical Background:
 
-        The skin temperature, heartbeat rate, and galvanic skin response sensor are connected to the node. They measure _real_-time data produced by the user and transmit the data to the server node. The heartbeat rate and skin temperature are medical data that reflect the physiological status. The galvanic skin response refers to changes in sweat gland activity that are reflective of the intensity of the emotional state, otherwise called emotional arousal. Theses index are essential and meaningful information that signify the overall state of students, and useful for the researchers to conduct further experiments.
+The skin temperature, heartbeat rate, and galvanic skin response sensor are connected to the node. They measure _real_-time data produced by the user and transmit the data to the server node. The heartbeat rate and skin temperature are medical data that reflect the physiological status. The galvanic skin response refers to changes in sweat gland activity that are reflective of the intensity of the emotional state, otherwise called emotional arousal. Theses index are essential and meaningful information that signify the overall state of students, and useful for the researchers to conduct further experiments.
 
 ### System design:
 
-        The system utilizes Bluetooth Mesh network as the primary communication protocol. The network consists of 50 server nodes, one client node, and one Linux operating system based computer as the computational node to output the analysis of the data.
+The system utilizes Bluetooth Mesh network as the primary communication protocol. The network consists of 50 server nodes, one client node, and one Linux operating system based computer as the computational node to output the analysis of the data.
 
 ![](pic/System overview.png)
 
@@ -24,14 +24,14 @@ Figure 1: System overview
 
 #### The Bluetooth mesh network:
 
-        The Bluetooth mesh network is developed based on Bluetooth low energy(BLE). It contains seven layers. In this project, only the network layer and the model layer knowledge are required. The mesh network consists of nodes sharing four common resources(details please reference mesh profile v1.1 section 3):
+The Bluetooth mesh network is developed based on Bluetooth low energy(BLE). It contains seven layers. In this project, only the network layer and the model layer knowledge are required. The mesh network consists of nodes sharing four common resources(details please reference mesh profile v1.1 section 3):
 
 1.   network addresses used to identify source and destination of messages
 2. network keys used to secure and authenticate messages at the network layer
 3. application keys used to secure and authenticate messages at the access layer
 4. IV Index used to extend the lifetime of the network
 
-    In the project, the model layer application utilizes the sensor client model and sensor server model to set up the functional nodes. Also, a configuration client model is implemented in a node that is used to generate and distribute the network and application keys to make sure devices that need to communicate to each other share the proper keys for both network and access layers.
+In the project, the model layer application utilizes the sensor client model and sensor server model to set up the functional nodes. Also, a configuration client model is implemented in a node that is used to generate and distribute the network and application keys to make sure devices that need to communicate to each other share the proper keys for both network and access layers.
 
 There are three roles in this mesh network:
 
@@ -41,19 +41,19 @@ There are three roles in this mesh network:
 
 Here are some brief explanations:
 ### the Server nodes:
-        The server nodes are the device nodes that are physically connected with the sensors, and the provisioner will provision it after the network has been established. The server nodes implement two models, a sensor setup model, and a sensor server model. The two models work together to send different types of messages to the client node.
+The server nodes are the device nodes that are physically connected with the sensors, and the provisioner will provision it after the network has been established. The server nodes implement two models, a sensor setup model, and a sensor server model. The two models work together to send different types of messages to the client node.
 ### the Client node:
-        The client node is the one to send commands to and receive data from the server nodes. The client node implements a sensor client model. In the primary design of the network, there is only one client node that exists in the network. Currently, the client node is designed to have an external button to send the commands to the server nodes. Every time the button has been pressed, the corresponding types of messages will be sent to the server node and receive the immediate replies. ![](RackMultipart20200510-4-7r7bm3_html_37798fa37fb27e79.png)
+The client node is the one to send commands to and receive data from the server nodes. The client node implements a sensor client model. In the primary design of the network, there is only one client node that exists in the network. Currently, the client node is designed to have an external button to send the commands to the server nodes. Every time the button has been pressed, the corresponding types of messages will be sent to the server node and receive the immediate replies. ![](RackMultipart20200510-4-7r7bm3_html_37798fa37fb27e79.png)
 
 Figure 2: Illustration of Sensor server model and sensor client model
 
 _(reference: model specification 4.5 )_
 ### the Provisioner node:
-        The provisioner is the creator and the organizer of the network. Its primary responsibilities are to create the Bluetooth mesh network and provision device nodes that want to join into the network by distributing the addresses(but the application keys and network keys are distributed by configuration client model as mentioned above). The provisioner is currently implemented in the client node as well as the configuration client model for convenience. However, they can also be isolated from the client node.
+The provisioner is the creator and the organizer of the network. Its primary responsibilities are to create the Bluetooth mesh network and provision device nodes that want to join into the network by distributing the addresses(but the application keys and network keys are distributed by configuration client model as mentioned above). The provisioner is currently implemented in the client node as well as the configuration client model for convenience. However, they can also be isolated from the client node.
 
 ### The computer:
 
-        To achieve a higher computational capability, a Linux operating system based computer has been introduced into the network. There are basically two ways to connect the computer to the network. The first one is to connect the computer to the client node through a serial port to read the printed data received by the client. We can directly print the data from the terminal to a .csv file by using Linux command( for example, &quot;tee&quot; command), or using third party software that converts the data from the command line tools.
+To achieve a higher computational capability, a Linux operating system based computer has been introduced into the network. There are basically two ways to connect the computer to the network. The first one is to connect the computer to the client node through a serial port to read the printed data received by the client. We can directly print the data from the terminal to a .csv file by using Linux command( for example, &quot;tee&quot; command), or using third party software that converts the data from the command line tools.
 
 For example, to print output from the monitoring result from command line to a .csv file,
 
@@ -61,17 +61,17 @@ For example, to print output from the monitoring result from command line to a .
 
 \*\*(idf.py is the ESP IDF framework development tool, it can monitor the log information of the connected device)
 
-        The second way to connect the computer to the network is to convert the computer to a mesh node, connecting to the network via Bluetooth. However, currently Linux operating system is not officially supported by the BLE mesh stack, the BLE mesh network only compatible with device supports BLE core specification 4.0 and higher version. However, a permissible way to achieve this is to use BlueZ on Raspberry Pi(Linux Platform). The BlueZ 5.1 supports Raspiberry Pi as a Bluetooth mesh node and allow it to join Bluetooth mesh network. Here is the instructions of [how to deploy BlueZ to Raspberry Pi 4.](https://www.bluetooth.com/blog/use-bluez-v5-50-andraspberry-pi-4-updateto-create-a-bluetoothmesh-provisioner/)
+The second way to connect the computer to the network is to convert the computer to a mesh node, connecting to the network via Bluetooth. However, currently Linux operating system is not officially supported by the BLE mesh stack, the BLE mesh network only compatible with device supports BLE core specification 4.0 and higher version. However, a permissible way to achieve this is to use BlueZ on Raspberry Pi(Linux Platform). The BlueZ 5.1 supports Raspiberry Pi as a Bluetooth mesh node and allow it to join Bluetooth mesh network. Here is the instructions of [how to deploy BlueZ to Raspberry Pi 4.](https://www.bluetooth.com/blog/use-bluez-v5-50-andraspberry-pi-4-updateto-create-a-bluetoothmesh-provisioner/)
 
 #### The node implementing SoC(System on Chip):
 
-        This project uses ESP32-DevKitC as the mainboard to implementing the functionalities of the nodes. The ESP32-DevKitC is produced by Espressif, and empowered by ESP-IDF framework to development BLE mesh applications. It has a high performance and the complete Bluetooth mesh stack implementation. Also, the low price is the shining point of it, an ordinary ESP32 DevKit is only approximate $10. Here is the ESP-IDF [GitHub repository address.](https://github.com/espressif/esp-idf)
+This project uses ESP32-DevKitC as the mainboard to implementing the functionalities of the nodes. The ESP32-DevKitC is produced by Espressif, and empowered by ESP-IDF framework to development BLE mesh applications. It has a high performance and the complete Bluetooth mesh stack implementation. Also, the low price is the shining point of it, an ordinary ESP32 DevKit is only approximate $10. Here is the ESP-IDF [GitHub repository address.](https://github.com/espressif/esp-idf)
 
 #### The sensors:
 
-        Temperature sensor: OTI-301, this temperature sensor is an infrared sensor, the specification about the sensor: [Specification](https://drive.google.com/file/d/1mmdkHkNbwC5VgQxGMrq07XolajNvgBkN/view?usp=sharing)
+Temperature sensor: OTI-301, this temperature sensor is an infrared sensor, the specification about the sensor: [Specification](https://drive.google.com/file/d/1mmdkHkNbwC5VgQxGMrq07XolajNvgBkN/view?usp=sharing)
 
-        The sensor uses IIC bus to communicate with the server board via GPIO 18 and GPIO 19, and it has a high accuracy of ± 0.3C. When the sensor server node sends a get command, it replies with 6 bytes data, the first three bytes are ambient temperature data, and the rest are object temperature data. Here is the signal sequence diagram and formula to get the temperature data:
+The sensor uses IIC bus to communicate with the server board via GPIO 18 and GPIO 19, and it has a high accuracy of ± 0.3C. When the sensor server node sends a get command, it replies with 6 bytes data, the first three bytes are ambient temperature data, and the rest are object temperature data. Here is the signal sequence diagram and formula to get the temperature data:
 
 ![](RackMultipart20200510-4-7r7bm3_html_114370544451abb4.png)
 
@@ -91,11 +91,11 @@ And the schematic with ESP32
 
 Figure 4: ESP 32 DevKit C to OTI-301
 
-        Alternatively, a contact temperature could also be used. The sensor DS18B20 is a one-wire waterproof temperature sensor. Here is the [library](https://github.com/nimaltd/ds18b20) of this sensor. The sensor DS18B20 has high resolution and accuracy, however, it also has the deflect for most contact temperature, a slow responding time. It usually takes 40 to 60 seconds to reach a stable readings since the temperature data is acquired by its steel probe, and the heat conduction takes time to complete.
+Alternatively, a contact temperature could also be used. The sensor DS18B20 is a one-wire waterproof temperature sensor. Here is the [library](https://github.com/nimaltd/ds18b20) of this sensor. The sensor DS18B20 has high resolution and accuracy, however, it also has the deflect for most contact temperature, a slow responding time. It usually takes 40 to 60 seconds to reach a stable readings since the temperature data is acquired by its steel probe, and the heat conduction takes time to complete.
 
 #### Other sensors (Still in development):
 
-        The usages of other sensors are similar to the temperature sensor. The heartbeat sensor and the GSR sensor also use one-wire data line to transmit data, and the GSR sensor comes with two finger-cots, which makes it easy to use. The model ofHeartbeat sensor is [Genuine Pulse Sensor](https://www.amazon.com/Tragoods-Monitor-Sensor-Arduino-Pulsesensor/dp/B07GGNNLJL/ref=sr_1_1?dchild=1&amp;keywords=heartbeat+Pulse+Sensor&amp;qid=1588902502&amp;s=electronics&amp;sr=1-1), and the model of GSR sensor is [Grove GSR Sensor Module 3.3V/5V](https://www.amazon.com/seeed-studio-Seeedstudio-Grove-sensor/dp/B012TNYDE4/ref=sr_1_1?dchild=1&amp;keywords=GSR+sensor&amp;qid=1588902431&amp;s=electronics&amp;sr=1-1).
+The usages of other sensors are similar to the temperature sensor. The heartbeat sensor and the GSR sensor also use one-wire data line to transmit data, and the GSR sensor comes with two finger-cots, which makes it easy to use. The model ofHeartbeat sensor is [Genuine Pulse Sensor](https://www.amazon.com/Tragoods-Monitor-Sensor-Arduino-Pulsesensor/dp/B07GGNNLJL/ref=sr_1_1?dchild=1&amp;keywords=heartbeat+Pulse+Sensor&amp;qid=1588902502&amp;s=electronics&amp;sr=1-1), and the model of GSR sensor is [Grove GSR Sensor Module 3.3V/5V](https://www.amazon.com/seeed-studio-Seeedstudio-Grove-sensor/dp/B012TNYDE4/ref=sr_1_1?dchild=1&amp;keywords=GSR+sensor&amp;qid=1588902431&amp;s=electronics&amp;sr=1-1).
 
 #### Step by Step instructions to reproduce:
 
@@ -161,15 +161,15 @@ Figure 8: Client side received temperature data
 
 **Discussion** :
 
-        The project is not a mature project yet, it still needs a lot of work to development. Currently, only the temperature sensor and button functionalities are finished, the heartbeat sensor and the GSR sensor are still in development. However, the framework is almost done. The BLE mesh is capable to contain 32768 nodes, and every node can relay the messages to each other. That makes it a very efficient and highly extendable network, and hence very suitable for developing a sensor network.
+The project is not a mature project yet, it still needs a lot of work to development. Currently, only the temperature sensor and button functionalities are finished, the heartbeat sensor and the GSR sensor are still in development. However, the framework is almost done. The BLE mesh is capable to contain 32768 nodes, and every node can relay the messages to each other. That makes it a very efficient and highly extendable network, and hence very suitable for developing a sensor network.
 
 #### Future development:
 
-        There are many possible and exciting progress that could be made in the future. The complete system should be able to visualize the real-time data received on the Linux computer. To achieve this, we can use [Grafana](https://grafana.com/)and [InfluxDB](https://portal.influxdata.com/downloads/).
+There are many possible and exciting progress that could be made in the future. The complete system should be able to visualize the real-time data received on the Linux computer. To achieve this, we can use [Grafana](https://grafana.com/)and [InfluxDB](https://portal.influxdata.com/downloads/).
 
-        Also, the server node can even have its own screen to show the real-time data, so the user can view the data himself/herself.
+Also, the server node can even have its own screen to show the real-time data, so the user can view the data himself/herself.
 
-        Moreover, the client node can realize a button array to get the user&#39;s data directionally or use a number pad instead to get the data from the server node by number.       
+Moreover, the client node can realize a button array to get the user&#39;s data directionally or use a number pad instead to get the data from the server node by number.       
 
 #### Appendix & References:
 
