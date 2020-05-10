@@ -58,9 +58,9 @@ To achieve a higher computational capability, a Linux operating system based com
 
 For example, to print output from the monitoring result from command line to a .csv file,
 
-``**idf.py monitor -p [port number] | tee ouput.csv**``
+``idf.py monitor -p [port number] | tee ouput.csv``
 
-\*\*(idf.py is the ESP IDF framework development tool, it can monitor the log information of the connected device)
+***(idf.py is the ESP IDF framework development tool, it can monitor the log information of the connected device)***
 
 The second way to connect the computer to the network is to convert the computer to a mesh node, connecting to the network via Bluetooth. However, currently Linux operating system is not officially supported by the BLE mesh stack, the BLE mesh network only compatible with device supports BLE core specification 4.0 and higher version. However, a permissible way to achieve this is to use BlueZ on Raspberry Pi(Linux Platform). The BlueZ 5.1 supports Raspiberry Pi as a Bluetooth mesh node and allow it to join Bluetooth mesh network. Here is the instructions of [how to deploy BlueZ to Raspberry Pi 4.](https://www.bluetooth.com/blog/use-bluez-v5-50-andraspberry-pi-4-updateto-create-a-bluetoothmesh-provisioner/)
 
@@ -108,9 +108,7 @@ sudo apt-get install git wget flex bison gperf python python-pip python-setuptoo
 
 ```
 mkdir esp
-
 cd esp
-
 clone[https://github.com/espressif/esp-idf.git](https://github.com/espressif/esp-idf.git)
 ```
 
@@ -118,7 +116,6 @@ clone[https://github.com/espressif/esp-idf.git](https://github.com/espressif/esp
 
 ```
 cd ~/esp/esp-idf
-
 ./install.sh
 ```
 
