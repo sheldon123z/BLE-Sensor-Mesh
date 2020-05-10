@@ -147,7 +147,7 @@ Figure 5: Client provision successfully
 
 Figure 6: Server side provision success log information
 
-        Then you can try to get the temperature sensor information and readings by pressing the left button on the client board. The information of the sensor will show up like below:
+Then you can try to get the temperature sensor information and readings by pressing the left button on the client board. The information of the sensor will show up like below:
 
 ![](RackMultipart20200510-4-7r7bm3_html_3b6fee101d00c2ac.png)
 
